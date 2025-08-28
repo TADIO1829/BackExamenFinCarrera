@@ -3,9 +3,10 @@ import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/rutas.js";
 import { connectDB } from "./config/db.js";
-import materiaRoutes from "./routes/rutasmaterias.js";
-import estudianteRoutes from "./routes/rutasestudiantes.js";
-import matriculaRoutes from "./routes/rutasmatriculas.js";
+
+import vehiculoRoutes from "./routes/rutasvehiculos.js";
+import clienteRoutes from "./routes/rutasclientes.js"
+import reservasRoutes from "./routes/rutasreservas.js"
 dotenv.config();
 
 const app = express();
@@ -17,9 +18,10 @@ connectDB();
 
 
 app.use(authRoutes);
-app.use("/materias", materiaRoutes);
-app.use("/estudiantes", estudianteRoutes);
-app.use("/matriculas", matriculaRoutes);
+
+app.use("/vehiculos", vehiculoRoutes);
+app.use("/clientes", clienteRoutes);
+app.use("/reservas", reservasRoutes);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {

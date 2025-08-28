@@ -1,19 +1,18 @@
 import express from "express";
 import { verifyToken } from "../middleware/auth.js";
 
-import { crearReserva,
-  registroReserva,
+import { 
   obtenerReservas,
   obtenerReserva,
   actualizarReserva,
-  eliminarReserva
+  eliminarReserva,
+  crearReserva
  } from "../controllers/reservacontroller.js";
 const router = express.Router();
 
 router.use(verifyToken);
 
-router.post("/", registroReserva);
-router.post("/crear", crearReserva);
+router.post("/", crearReserva);
 router.get("/", obtenerReservas);
 router.get("/:id", obtenerReserva);
 router.put("/:id", actualizarReserva);

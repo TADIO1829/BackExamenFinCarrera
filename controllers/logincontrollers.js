@@ -45,10 +45,10 @@ export const login = async (req, res) => {
     email = email.toLowerCase();
 
     const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ error: "Usuario no encontrado" });
+    if (!user) return res.status(400).json({ error: "Usuario o contraseña incorrecto" });
 
     const validPassword = await bcrypt.compare(password, user.password);
-    if (!validPassword) return res.status(401).json({ error: "Contraseña incorrecta" });
+    if (!validPassword) return res.status(401).json({ error: "Usuario o contraseña incorrecto" });
 
    
     const token = jwt.sign(
